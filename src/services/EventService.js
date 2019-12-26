@@ -6,6 +6,22 @@ export function getEvents() {
         .then(response => {
             resolve(response.json())
         })
-        .catch(error => reject(error))
+        .catch(error => {reject(error)})
     })
 }
+
+export function addEvent(event) {
+    return new Promise((resolve, reject) => {
+        const data = JSON.stringify(event)
+        fetch('http://localhost:3000/event', 
+        {
+        method: 'post',
+        body: data,
+        headers: { 'Content-Type': 'application/json' }
+        })
+        .then(response => {
+            resolve(response.json())
+        })
+        .catch(error => {reject(error)})
+    })
+}   
